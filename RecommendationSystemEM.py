@@ -28,16 +28,28 @@ class RecommendationSystem(object):
                                header=None).iterrows():
             self.uid_pid_explicit[int(row[1][0]),
                                   int(row[1][1])]=float(row[1][2])
-        self.uid_pid_implicit = set()
-        self.uid_implicit=set(t[0] for t in list(self.uid_pid_implicit))
-        self.pid_implicit=set(t[1] for t in list(self.uid_pid_implicit))
 
+
+        self.uid_pid_explicit_set:set = set(self.uid_pid_explicit.keys())
+
+        self.uid_explicit=set(t[0] for t in list(self.uid_pid_explicit_set))
+        self.pid_explicit=set(t[1] for t in list(self.uid_pid_explicit_set))
+
+
+        self.uid_pid_implicit = set()
         for row in pd.read_csv(os.path.join(dataFolderPath,"implicit.csv"),
                                header=None).iterrows():
             self.uid_pid_implicit.add((int(row[1][0]),
                                        int(row[1][1])))
+        self.uid_pid_implicit_backup = self.uid_pid_implicit
+
+        self.uid_implicit=set(t[0] for t in list(self.uid_pid_implicit))
+        self.pid_implicit=set(t[1] for t in list(self.uid_pid_implicit))
+
 
         self.latent_vars:int = None
+
+
 
         self.Nuid:int = len(self.uidDict) # which is m for MU in this case
         self.Npid:int = len(self.pidDict) # which is n for MI in this case
@@ -72,6 +84,7 @@ class RecommendationSystem(object):
         implicit_tuples_uid2 = set([t[0] for t in self.uid_pid_implicit if t[1]==pid2])
         tuples_uid2 = explicit_tuples_uid2|implicit_tuples_uid2
 #         print(tuples_uid2)
+
         return len(tuples_uid1&tuples_uid2)/len(tuples_uid1|tuples_uid2)
 
     def matrixFactExplicitFeedback(self,
@@ -174,13 +187,13 @@ class RecommendationSystem(object):
                 return (np.transpose(qi)*pu)[0,0]
 
 
-        uid_pid_explicit_hat = dict()
-        uid_pid_explicit_hat_previous = uid_pid_explicit_hat.copy()
+        uid_pid_explicit_hat = self.uid_pid_explicit.copy()
         currEffictive = True
         mu = None
         mi = None
 
         if testCase == 1:
+            # print("directly outputting the initialization")
             mu, mi = self.matrixFactExplicitFeedback()
             self.mu_result = mu.copy()
             # print(mu)
@@ -189,36 +202,41 @@ class RecommendationSystem(object):
             return mu, mi
 
         while currEffictive:
+            # print("currently")
             mu, mi = self.matrixFactExplicitFeedback()
+            tmp_uid_pid_implicit = self.uid_pid_implicit.copy()
+
+
 
             for uid_pid_pair_i in self.uid_pid_implicit.copy():
                 curr_uid = uid_pid_pair_i[0]
                 curr_pid = uid_pid_pair_i[1]
 
+                has_uid = lambda m: sum([k[0] == m for k in list(uid_pid_explicit_hat.keys())]) > 0
+                has_pid = lambda m: sum([k[1] == m for k in list(uid_pid_explicit_hat.keys())]) > 0
 
-                if uid_pid_pair_i in self.uid_pid_explicit and (testCase == 2 or testCase ==0):
+                if uid_pid_pair_i in uid_pid_explicit_hat and (testCase == 2 or testCase == 0):
+                    # print("case 1 running")
                     uid_pid_explicit_hat[uid_pid_pair_i] = q_Tp_(curr_pid,curr_uid,mu,mi)
-                    self.uid_pid_implicit.remove(uid_pid_pair_i)
+                    tmp_uid_pid_implicit.remove(uid_pid_pair_i)
                     continue
 
-                if curr_uid in self.uid_implicit and curr_pid not in self.pid_implicit and (testCase==3 or testCase==0 or testCase==5):
-
-                    up = sum([ cutOff(self.get_products_similarity(curr_pid,
-                            j),sim_thresh)*q_Tp_(j,curr_uid, mu,
-                            mi) for j in self.pidList if j is not curr_pid])
-                    down = sum([cutOff(self.get_products_similarity(curr_pid,j),
-                        sim_thresh) for j in self.pidList if j is not curr_pid])
-                    self.uid_pid_implicit.remove(uid_pid_pair_i)
+                if has_uid(curr_uid) and not has_pid(curr_pid) and (testCase==3 or testCase==0 or testCase==5):
+                    # print("case 2 running")
+                    up = sum([ cutOff(self.get_products_similarity(curr_pid,j),sim_thresh)*q_Tp_(j,curr_uid, mu, mi) for j in self.pidList if j is not curr_pid])
+                    down = sum([cutOff(self.get_products_similarity(curr_pid,j),sim_thresh) for j in self.pidList if j is not curr_pid])
+                    tmp_uid_pid_implicit.remove(uid_pid_pair_i)
                     uid_pid_explicit_hat[uid_pid_pair_i] = up/down
                     continue
 
-                if curr_uid not in self.uid_implicit and curr_pid in self.pid_implicit and (testCase==4 or testCase==0 or testCase==5):
-
-                    up = sum([cutOff(self.get_users_similarity(curr_uid,v), sim_thresh)*q_Tp_(v,curr_uid,mu,mi) for v in self.uidList if v is not curr_uid])
-                    down = sum([cutOff(self.get_products_similarity(curr_uid, v),sim_thresh) for v in self.uidList if v is not curr_uid])
-                    self.uid_pid_implicit.remove(uid_pid_pair_i)
+                if not has_uid(curr_uid) and has_pid(curr_pid) and (testCase==4 or testCase==0 or testCase==5):
+                    # print("case 3 running")
+                    up = sum([cutOff(self.get_users_similarity(curr_uid,v), sim_thresh)*q_Tp_(curr_pid,v,mu,mi) for v in self.uidList if v is not curr_uid])
+                    down = sum([cutOff(self.get_users_similarity(curr_uid, v),sim_thresh) for v in self.uidList if v is not curr_uid])
+                    tmp_uid_pid_implicit.remove(uid_pid_pair_i)
                     uid_pid_explicit_hat[uid_pid_pair_i] = up/down
                 else:
+                    # print("doing nothing")
                     currEffictive = False
             self.uid_pid_explicit.update(uid_pid_explicit_hat)
 

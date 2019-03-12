@@ -7,6 +7,8 @@ def split(inFile, outFolder, explicit_ratio: float):
 
     origDat = pd.read_csv(inFile, header=None)
     train, test = train_test_split(origDat, test_size=1-explicit_ratio)
+    test = origDat
+
     test = test.drop(test.columns[-1], axis=1)
     print("saving for the implicit file")
     test.to_csv(os.path.join(outFolder, "implicit.csv"), header=False, index=False)
