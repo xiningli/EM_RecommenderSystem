@@ -105,7 +105,6 @@ class RecommendationSystem(object):
             return target
 
 
-
         def get_next_step_gradient(currMu_input,
                                    currMi_input,
                                    training_points):
@@ -241,7 +240,7 @@ class RecommendationSystem(object):
         for curr_row in baseLineDf.iterrows():
             curr_uid = int(curr_row[1][0])
             curr_pid = int(curr_row[1][1])
-            curr_rating = float(curr_row[1][1])
+            curr_rating = float(curr_row[1][2])
 
             curr_uid_loc = self.uidList.index(curr_uid)
             curr_pid_loc = self.pidList.index(curr_pid)
