@@ -12,7 +12,7 @@ class RecommendationSystem(object):
                                header=None).iterrows():
             self.uidDict[row[1][0]] = row[1][1]
 
-        self.uidList:list = list(self.uidDict.keys())
+        self.uidList: list = list(self.uidDict.keys())
 
 
         self.pidDict:dict = dict()
@@ -44,7 +44,8 @@ class RecommendationSystem(object):
         # p mu u MU user
         # q mi i Mi item
         self.ran = False
-
+        self.mu_result = None
+        self.mi_result = None
 
     def get_users_similarity(self, uid1, uid2):
 
@@ -151,7 +152,7 @@ class RecommendationSystem(object):
         return currMu, currMi
 
 
-    def run(self,sim_thresh = 0.1):
+    def run(self,sim_thresh:float = 0.1, testCase:int =0):
 
         if self.ran:
             print("ran, check result")
@@ -178,10 +179,16 @@ class RecommendationSystem(object):
         currEffictive = True
         mu = None
         mi = None
+
+        if testCase == 1:
+            mu, mi = self.matrixFactExplicitFeedback()
+            self.mu_result = mu.copy()
+            # print(mu)
+            self.mi_result = mi.copy()
+            # print(mi)
+            return mu, mi
+
         while currEffictive:
-
-
-
             mu, mi = self.matrixFactExplicitFeedback()
 
             for uid_pid_pair_i in self.uid_pid_implicit.copy():
@@ -189,12 +196,12 @@ class RecommendationSystem(object):
                 curr_pid = uid_pid_pair_i[1]
 
 
-                if uid_pid_pair_i in self.uid_pid_explicit:
+                if uid_pid_pair_i in self.uid_pid_explicit and (testCase == 2 or testCase ==0):
                     uid_pid_explicit_hat[uid_pid_pair_i] = q_Tp_(curr_pid,curr_uid,mu,mi)
                     self.uid_pid_implicit.remove(uid_pid_pair_i)
                     continue
 
-                if curr_uid in self.uid_implicit and curr_pid not in self.pid_implicit:
+                if curr_uid in self.uid_implicit and curr_pid not in self.pid_implicit and (testCase==3 or testCase==0 or testCase==5):
 
                     up = sum([ cutOff(self.get_products_similarity(curr_pid,
                             j),sim_thresh)*q_Tp_(j,curr_uid, mu,
@@ -205,18 +212,40 @@ class RecommendationSystem(object):
                     uid_pid_explicit_hat[uid_pid_pair_i] = up/down
                     continue
 
-                if curr_uid not in self.uid_implicit and curr_pid in self.pid_implicit:
+                if curr_uid not in self.uid_implicit and curr_pid in self.pid_implicit and (testCase==4 or testCase==0 or testCase==5):
 
-                    up = sum([cutOff(self.get_users_similarity(curr_uid,v),
-                            sim_thresh)*q_Tp_(v,curr_uid,mu,mi
-                            ) for v in self.uidList if v is not curr_uid])
-                    down = sum([cutOff(self.get_products_similarity(curr_uid,
-                        v),sim_thresh) for j in self.uidList if j is not curr_uid])
+                    up = sum([cutOff(self.get_users_similarity(curr_uid,v), sim_thresh)*q_Tp_(v,curr_uid,mu,mi) for v in self.uidList if v is not curr_uid])
+                    down = sum([cutOff(self.get_products_similarity(curr_uid, v),sim_thresh) for v in self.uidList if v is not curr_uid])
                     self.uid_pid_implicit.remove(uid_pid_pair_i)
                     uid_pid_explicit_hat[uid_pid_pair_i] = up/down
                 else:
                     currEffictive = False
             self.uid_pid_explicit.update(uid_pid_explicit_hat)
+
+        self.mu_result = mu.copy()
+        # print(mu)
+        self.mi_result = mi.copy()
+        # print(mi)
         return mu, mi
 
 
+    def calculateRMSE(self, baseLineFile):
+        r_hat = np.transpose(self.mu_result)*self.mi_result
+        baseLineDf = pd.read_csv(baseLineFile, header=None)
+        mat_num_row = len(self.uidList)
+        mat_num_col = len(self.pidList)
+
+        baseLineMatrix = np.matrix(np.zeros( (mat_num_row,mat_num_col) ))
+
+        for curr_row in baseLineDf.iterrows():
+            curr_uid = int(curr_row[1][0])
+            curr_pid = int(curr_row[1][1])
+            curr_rating = float(curr_row[1][1])
+
+            curr_uid_loc = self.uidList.index(curr_uid)
+            curr_pid_loc = self.pidList.index(curr_pid)
+            baseLineMatrix[curr_uid_loc, curr_pid_loc] = curr_rating
+
+        squaredError = (np.power((baseLineMatrix-r_hat) ,2))
+        RMSE = np.sqrt(squaredError.sum()/squaredError.size)
+        return RMSE
