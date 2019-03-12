@@ -46,7 +46,8 @@ class RecommendationSystem(object):
         self.ran = False
         self.mu_result = None
         self.mi_result = None
-
+        self.baseLineMatrix = None
+        self.r_hat = None
     def get_users_similarity(self, uid1, uid2):
 
         explicit_tuples_pid1 = set([t[1] for t in self.uid_pid_explicit.keys() if t[0]==uid1])
@@ -246,6 +247,8 @@ class RecommendationSystem(object):
             curr_pid_loc = self.pidList.index(curr_pid)
             baseLineMatrix[curr_uid_loc, curr_pid_loc] = curr_rating
 
-        squaredError = (np.power((baseLineMatrix-r_hat) ,2))
+        self.r_hat = r_hat.copy()
+        self.baseLineMatrix = baseLineMatrix.copy()
+        squaredError = (np.power((baseLineMatrix-r_hat), 2))
         RMSE = np.sqrt(squaredError.sum()/squaredError.size)
         return RMSE
