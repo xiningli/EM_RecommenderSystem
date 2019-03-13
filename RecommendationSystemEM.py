@@ -211,10 +211,10 @@ class RecommendationSystem(object):
                 curr_uid = uid_pid_pair_i[0]
                 curr_pid = uid_pid_pair_i[1]
 
-                has_uid = lambda m: sum([k[0] == m for k in list(uid_pid_explicit_hat.keys())]) > 0
-                has_pid = lambda m: sum([k[1] == m for k in list(uid_pid_explicit_hat.keys())]) > 0
+                has_uid = lambda m: sum([k[0] == m for k in list(training_dict.keys())]) > 0
+                has_pid = lambda m: sum([k[1] == m for k in list(training_dict.keys())]) > 0
 
-                if uid_pid_pair_i in uid_pid_explicit_hat and (testCase == 2 or testCase == 0):
+                if uid_pid_pair_i in training_dict and (testCase == 2 or testCase == 0):
                     # print("case 1 running")
                     uid_pid_explicit_hat[uid_pid_pair_i] = q_Tp_(curr_pid,curr_uid,mu,mi)
                     tmp_uid_pid_implicit.remove(uid_pid_pair_i)
@@ -237,7 +237,12 @@ class RecommendationSystem(object):
                 else:
                     # print("doing nothing")
                     currEffictive = False
-            training_dict.update(uid_pid_explicit_hat)
+            if not currEffictive:
+                break
+
+            for t in uid_pid_explicit_hat:
+                if t not in training_dict:
+                    training_dict[t] = uid_pid_explicit_hat[t]
 
         self.mu_result = mu.copy()
         # print(mu)
@@ -268,3 +273,11 @@ class RecommendationSystem(object):
         squaredError = (np.power((baseLineMatrix-r_hat), 2))
         RMSE = np.sqrt(squaredError.sum()/squaredError.size)
         return RMSE
+
+
+
+for i in range(0,6):
+    recommender = RecommendationSystem(dataFolderPath="xsmall_data/")
+    runResult = recommender.run(sim_thresh = 0.1, testCase = i)
+    result = recommender.calculateRMSE("xsmall_data/ratings.csv")
+    print(result)
