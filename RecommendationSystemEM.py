@@ -187,7 +187,8 @@ class RecommendationSystem(object):
                 return (np.transpose(qi)*pu)[0,0]
 
 
-        uid_pid_explicit_hat = self.uid_pid_explicit.copy()
+        uid_pid_explicit_hat = dict()
+        training_dict = self.uid_pid_explicit.copy()
         currEffictive = True
         mu = None
         mi = None
@@ -201,14 +202,12 @@ class RecommendationSystem(object):
             # print(mi)
             return mu, mi
 
+        tmp_uid_pid_implicit = self.uid_pid_implicit.copy()
         while currEffictive:
             # print("currently")
             mu, mi = self.matrixFactExplicitFeedback()
-            tmp_uid_pid_implicit = self.uid_pid_implicit.copy()
 
-
-
-            for uid_pid_pair_i in self.uid_pid_implicit.copy():
+            for uid_pid_pair_i in self.uid_pid_implicit:
                 curr_uid = uid_pid_pair_i[0]
                 curr_pid = uid_pid_pair_i[1]
 
@@ -238,7 +237,7 @@ class RecommendationSystem(object):
                 else:
                     # print("doing nothing")
                     currEffictive = False
-            self.uid_pid_explicit.update(uid_pid_explicit_hat)
+            training_dict.update(uid_pid_explicit_hat)
 
         self.mu_result = mu.copy()
         # print(mu)
