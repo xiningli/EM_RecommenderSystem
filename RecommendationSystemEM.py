@@ -203,9 +203,10 @@ class RecommendationSystem(object):
             return mu, mi
 
         tmp_uid_pid_implicit = self.uid_pid_implicit.copy()
+        mu, mi = self.matrixFactExplicitFeedback()
         while currEffictive:
             # print("currently")
-            mu, mi = self.matrixFactExplicitFeedback()
+
 
             for uid_pid_pair_i in self.uid_pid_implicit:
                 curr_uid = uid_pid_pair_i[0]
@@ -237,7 +238,12 @@ class RecommendationSystem(object):
                 else:
                     # print("doing nothing")
                     currEffictive = False
-            if not currEffictive:
+
+            previousEst = np.transpose(mu)*mi
+            mu, mi = self.matrixFactExplicitFeedback()
+            currEst = np.transpose(mu)*mi
+
+            if not currEffictive and (currEst - previousEst).sum()<0.005:
                 break
 
             for t in uid_pid_explicit_hat:
