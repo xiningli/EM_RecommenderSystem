@@ -205,28 +205,31 @@ class RecommendationSystem(object):
         tmp_uid_pid_implicit = self.uid_pid_implicit.copy()
 
         mu, mi = self.matrixFactExplicitFeedback()
+        loopElements = list(self.uid_pid_implicit.copy())
         while currEffictive:
             # print("currently")
 
-
-            for uid_pid_pair_i in self.uid_pid_implicit:
+            loopElements = list(tmp_uid_pid_implicit.copy())
+            for uid_pid_pair_i in loopElements:
+                # print("ding: " + str(uid_pid_pair_i))
                 curr_uid = uid_pid_pair_i[0]
                 curr_pid = uid_pid_pair_i[1]
+                # print(tmp_uid_pid_implicit)
 
                 has_uid = lambda m: sum([k[0] == m for k in list(training_dict.keys())]) > 0
                 has_pid = lambda m: sum([k[1] == m for k in list(training_dict.keys())]) > 0
 
-                if uid_pid_pair_i in training_dict and (testCase == 2 or testCase == 0):
+                if has_uid(curr_uid) and has_pid(curr_pid) and (testCase == 2 or testCase == 0):
                     # print("case 1 running")
                     uid_pid_explicit_hat[uid_pid_pair_i] = q_Tp_(curr_pid,curr_uid,mu,mi)
-                    tmp_uid_pid_implicit.remove(uid_pid_pair_i)
+                    tmp_uid_pid_implicit.discard(uid_pid_pair_i)
                     continue
 
                 if has_uid(curr_uid) and not has_pid(curr_pid) and (testCase==3 or testCase==0 or testCase==5):
                     # print("case 2 running")
                     up = sum([ cutOff(self.get_products_similarity(curr_pid,j),sim_thresh)*q_Tp_(j,curr_uid, mu, mi) for j in self.pidList if j is not curr_pid])
                     down = sum([cutOff(self.get_products_similarity(curr_pid,j),sim_thresh) for j in self.pidList if j is not curr_pid])
-                    tmp_uid_pid_implicit.remove(uid_pid_pair_i)
+                    tmp_uid_pid_implicit.discard(uid_pid_pair_i)
                     uid_pid_explicit_hat[uid_pid_pair_i] = up/down
                     continue
 
@@ -234,23 +237,21 @@ class RecommendationSystem(object):
                     # print("case 3 running")
                     up = sum([cutOff(self.get_users_similarity(curr_uid,v), sim_thresh)*q_Tp_(curr_pid,v,mu,mi) for v in self.uidList if v is not curr_uid])
                     down = sum([cutOff(self.get_users_similarity(curr_uid, v),sim_thresh) for v in self.uidList if v is not curr_uid])
-                    tmp_uid_pid_implicit.remove(uid_pid_pair_i)
+                    tmp_uid_pid_implicit.discard(uid_pid_pair_i)
                     uid_pid_explicit_hat[uid_pid_pair_i] = up/down
-                else:
-                    # print("doing nothing")
-                    currEffictive = False
 
             previousEst = np.transpose(mu)*mi
             mu, mi = self.matrixFactExplicitFeedback()
             currEst = np.transpose(mu)*mi
 
-            if len(tmp_uid_pid_implicit) == 0 and abs((currEst - previousEst).sum())<0.005:
-                currEffictive = False
+
+            if len(tmp_uid_pid_implicit) == 0 and abs((currEst - previousEst).sum())<0.1:
+                    currEffictive = False
 
             for t in uid_pid_explicit_hat:
                 if t not in training_dict:
                     training_dict[t] = uid_pid_explicit_hat[t]
-
+            # print(training_dict)
         self.mu_result = mu.copy()
         # print(mu)
         self.mi_result = mi.copy()
@@ -282,9 +283,17 @@ class RecommendationSystem(object):
         return RMSE
 
 
+for j in range(100):
+    for i in range(0,2):
+        recommender = RecommendationSystem(dataFolderPath="fakeData/")
+        runResult = recommender.run(sim_thresh = 0.1, testCase = i)
+        result = recommender.calculateRMSE("fakeData/ratings.csv")
+        print(result, end="")
+        if i<1:
+            print(",", end="")
+    print("\n", end="")
 
-for i in range(0,6):
-    recommender = RecommendationSystem(dataFolderPath="xsmall_data/")
-    runResult = recommender.run(sim_thresh = 0.1, testCase = i)
-    result = recommender.calculateRMSE("xsmall_data/ratings.csv")
-    print(result)
+# recommender = RecommendationSystem(dataFolderPath="fakeData/")
+# runResult = recommender.run(sim_thresh=0.01, testCase=0)
+# result = recommender.calculateRMSE("fakeData/ratings.csv")
+# print(result)
