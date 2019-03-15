@@ -203,6 +203,7 @@ class RecommendationSystem(object):
             return mu, mi
 
         tmp_uid_pid_implicit = self.uid_pid_implicit.copy()
+
         mu, mi = self.matrixFactExplicitFeedback()
         while currEffictive:
             # print("currently")
@@ -243,8 +244,8 @@ class RecommendationSystem(object):
             mu, mi = self.matrixFactExplicitFeedback()
             currEst = np.transpose(mu)*mi
 
-            if not currEffictive and (currEst - previousEst).sum()<0.005:
-                break
+            if len(tmp_uid_pid_implicit) == 0 and abs((currEst - previousEst).sum())<0.005:
+                currEffictive = False
 
             for t in uid_pid_explicit_hat:
                 if t not in training_dict:
