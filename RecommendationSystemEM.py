@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import numpy as np
 from random import shuffle
-
+from DataPreprocessor import generate
 
 class RecommendationSystem(object):
 
@@ -285,9 +285,10 @@ class RecommendationSystem(object):
 
 for j in range(100):
     for i in range(0,2):
-        recommender = RecommendationSystem(dataFolderPath="fakeData/")
+        generate("PerfectData/ratings.csv", "PerfectData/", explicit_ratio=0.8)
+        recommender = RecommendationSystem(dataFolderPath="PerfectData/")
         runResult = recommender.run(sim_thresh = 0.1, testCase = i)
-        result = recommender.calculateRMSE("fakeData/ratings.csv")
+        result = recommender.calculateRMSE("PerfectData/ratings.csv")
         print(result, end="")
         if i<1:
             print(",", end="")

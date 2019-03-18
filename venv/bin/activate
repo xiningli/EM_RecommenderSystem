@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/xining.li/EM_RecommenderSystem/venv"
+VIRTUAL_ENV="/home/xiningli/repos/EM_RecommenderSystem/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
