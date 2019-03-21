@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 import os
 
 
-def generate(inFile, outFolder, explicit_ratio: float):
+def preprocess(inFile, outFolder, explicit_ratio: float):
 
     origDat = pd.read_csv(inFile, header=None)
     train, test = train_test_split(origDat, test_size=1-explicit_ratio)
@@ -16,4 +16,4 @@ def generate(inFile, outFolder, explicit_ratio: float):
 
 
 
-generate("xsmall_data/ratings.csv", "xsmall_data/", explicit_ratio=0.2)
+preprocess("xsmall_data/ratings.csv", "xsmall_data/", explicit_ratio=0.2)

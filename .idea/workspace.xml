@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82f42ce7-f1c1-4823-98ae-d609e1964d7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/EM_RecommenderSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EM_RecommenderSystem.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataGenerator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RecommenderSystemTest2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataPreprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectData/explicit.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectData/explicit.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectData/implicit.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectData/implicit.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecommendationSystemEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommendationSystemEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fakeData/explicit.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fakeData/explicit.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fakeData/implicit.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fakeData/implicit.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/activate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/activate.csh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/activate.fish" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/easy_install" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/easy_install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/f2py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/f2py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/f2py3" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/f2py3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/pip3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/python" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/python3" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecommenderSystemTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderSystemTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xsmall_data/explicit.csv" beforeDir="false" afterPath="$PROJECT_DIR$/xsmall_data/explicit.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xsmall_data/implicit.csv" beforeDir="false" afterPath="$PROJECT_DIR$/xsmall_data/implicit.csv" afterDir="false" />
     </list>
@@ -31,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RecommendationSystemEM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="290" column="55" selection-start-line="290" selection-start-column="55" selection-end-line="290" selection-end-column="55" />
+            <state relative-caret-position="104">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -44,21 +35,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataPreprocessor.py">
+        <entry file="file://$PROJECT_DIR$/DataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="263">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fakeData/ratings.csv">
+        <entry file="file://$PROJECT_DIR$/simulationByDistribution/ratings.csv">
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="-623" />
+            <state relative-caret-position="-232" />
           </provider>
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
@@ -66,7 +57,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fakeData/explicit.csv">
+        <entry file="file://$PROJECT_DIR$/simulationByDistribution/explicit.csv">
           <provider selected="true" editor-type-id="csv-text-editor" />
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
@@ -74,46 +65,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PerfectData/ratings.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="365">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/simulationByDistribution/implicit.csv">
+          <provider selected="true" editor-type-id="csv-text-editor" />
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PerfectData/pid.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="130">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PerfectData/uid.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
+        <entry file="file://$PROJECT_DIR$/simulationByDistribution/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RecommenderSystemTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="390">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RecommenderSystemTest2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -122,12 +102,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fakeData/uid.csv">
+        <entry file="file://$PROJECT_DIR$/PerfectData/implicit.csv">
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="104">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PerfectData/explicit.csv">
+          <provider selected="true" editor-type-id="csv-text-editor" />
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
@@ -152,6 +140,11 @@
       <find>return</find>
       <find>.remo</find>
       <find>remove</find>
+      <find>k</find>
+      <find>2</find>
+      <find>gener</find>
+      <find>matrixFactExplicitFeedback</find>
+      <find>0.4</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,20 +155,22 @@
       <list>
         <option value="$PROJECT_DIR$/venv/RecommenderSystemTest.py" />
         <option value="$PROJECT_DIR$/DataSplitter.py" />
-        <option value="$PROJECT_DIR$/RecommenderSystemTest.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/report.ipynb" />
         <option value="$PROJECT_DIR$/PerfectData/ratings.csv" />
         <option value="$PROJECT_DIR$/PerfectData/pid.csv" />
         <option value="$PROJECT_DIR$/PerfectData/uid.csv" />
         <option value="$PROJECT_DIR$/DataPreprocessor.py" />
+        <option value="$PROJECT_DIR$/RecommenderSystemTest.py" />
         <option value="$PROJECT_DIR$/RecommendationSystemEM.py" />
+        <option value="$PROJECT_DIR$/DataGenerator.py" />
+        <option value="$PROJECT_DIR$/RecommenderSystemTest2.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="67" />
-    <option name="y" value="155" />
+    <option name="x" value="102" />
+    <option name="y" value="95" />
     <option name="width" value="1736" />
     <option name="height" value="878" />
   </component>
@@ -479,6 +474,11 @@
             <path>
               <item name="EM_RecommenderSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="EM_RecommenderSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="simulationByDistribution" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EM_RecommenderSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EM_RecommenderSystem" type="462c0819:PsiDirectoryNode" />
               <item name="toyData" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -515,7 +515,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RecommendationSystemEM">
+  <component name="RunManager" selected="Python.RecommenderSystemTest2">
+    <configuration name="DataGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EM_RecommenderSystem" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataGenerator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="DataSplitter" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="EM_RecommenderSystem" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -579,16 +600,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="RecommenderSystemTest2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EM_RecommenderSystem" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RecommenderSystemTest2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.DataSplitter" />
       <item itemvalue="Python.RecommendationSystemEM" />
       <item itemvalue="Python.RecommenderSystemTest" />
+      <item itemvalue="Python.DataGenerator" />
+      <item itemvalue="Python.RecommenderSystemTest2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.RecommenderSystemTest" />
+        <item itemvalue="Python.RecommenderSystemTest2" />
+        <item itemvalue="Python.DataGenerator" />
         <item itemvalue="Python.RecommendationSystemEM" />
         <item itemvalue="Python.DataSplitter" />
-        <item itemvalue="Python.RecommenderSystemTest" />
       </list>
     </recent_temporary>
   </component>
@@ -606,8 +652,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="106" y="157" width="1736" height="878" extended-state="0" />
+    <frame x="102" y="95" width="1736" height="878" extended-state="0" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24795799" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40258065" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.39741936" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.4632258" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
+    </layout>
+    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24795799" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -628,7 +696,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pandas/__init__.py" />
@@ -637,15 +705,15 @@
     <entry file="file://$PROJECT_DIR$/small_data/implicit.csv" />
     <entry file="file://$USER_HOME$/.PyCharmEdu2018.3/system/python_stubs/281750536/builtins.py" />
     <entry file="file://$PROJECT_DIR$/toyData/explicit.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/toyData/implicit.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
@@ -658,15 +726,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xsmall_data/implicit.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xsmall_data/explicit.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
@@ -684,12 +752,14 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fakeData/uid.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/fakeData/pid.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fakeData/ratings.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
@@ -702,7 +772,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PerfectData/ratings.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="365">
+        <state relative-caret-position="494">
           <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
@@ -730,25 +800,27 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RecommenderSystemTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/fakeData/uid.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fakeData/pid.csv">
+    <entry file="file://$PROJECT_DIR$/PerfectData/explicit.csv">
       <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fakeData/ratings.csv">
+    <entry file="file://$PROJECT_DIR$/PerfectData/implicit.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-623" />
+        <state relative-caret-position="104">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
       </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
@@ -756,7 +828,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataPreprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="390">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -766,10 +838,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RecommendationSystemEM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="290" column="55" selection-start-line="290" selection-start-column="55" selection-end-line="290" selection-end-column="55" />
+        <state relative-caret-position="104">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulationByDistribution/ratings.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-232" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulationByDistribution/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulationByDistribution/implicit.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulationByDistribution/explicit.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RecommenderSystemTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RecommenderSystemTest2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
